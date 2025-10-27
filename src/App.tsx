@@ -5,16 +5,16 @@ const App = () => {
   return (
     <>
     <Grid templateAreas={{
-      base:`"nav nav" "aside main"`,
-      sm:`"nav " " main"`
-    }}>
+  base: `"nav nav" "main main"`, // aside removed
+  lg: `"nav nav" "aside main"`   // aside shown
+}}>
       <GridItem area="nav" bg='red'>< NavBar/></GridItem>
 
       <Show above="lg">
       <GridItem area="aside" bg='yellow'>aside</GridItem>
       </Show>
 
-      <GridItem area="main" bg="black">main</GridItem>
+      <GridItem area="main" bg="blue">main</GridItem>
 
 
     </Grid>
