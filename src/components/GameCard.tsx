@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, HStack, Image, Text } from "@chakra-ui/react"
+import { Card, CardBody, Heading, HStack, Image, } from "@chakra-ui/react"
 import type { Game } from "../hooks/useGame"
 import { PlatformIconList } from "./PlatformIconList"
 import CreditScore from "./CreditScore"
@@ -13,7 +13,7 @@ const GameCard = ({game}:Props) => {
   return (
     <>
     
-<Card borderRadius={10} overflow='hidden' width='250'>
+<Card >
     <Image src={getCropedImageUrl(game.background_image)}/>
     <CardBody>
     <Heading fontSize="xl">{game.name}</Heading>
