@@ -29,20 +29,29 @@ import { CanceledError } from "axios"
  const useGame = () => {
 const [games, setgames] = useState<Game[]>([])
 const [error, seterror] = useState('')
-
+const [isLoading, setLoading
+]  = useState(false)
 
 useEffect(()=>{
+    
     const controller = new AbortController()
+
+    setLoading(true)
+
     apiClient.get<FetchGameGrid>('/games', {signal: controller.signal})
-    .then((res)=>setgames(res.data.results))
+    .then((res)=>{setgames(res.data.results)
+        setLoading(false)
+     })
     .catch((err)=>{
         if(err instanceof CanceledError)return;
-        seterror(err.message)})
+        seterror(err.message)
+        setLoading(false)
+    })
 
     return ()=>controller.abort()
 }, [])
 
-return {games, error}
+return {games, error, isLoading}
 
 }
 
